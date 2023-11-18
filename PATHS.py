@@ -1,6 +1,6 @@
 NAVBAR_PATHS = {
     'HOME':'home',
-    'ABOUT': 'about',
+    'MISSION': 'Mission',
     'ANALYSIS': 'analysis'
 }
 
