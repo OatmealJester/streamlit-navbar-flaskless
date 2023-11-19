@@ -1,6 +1,6 @@
 import streamlit as st
 import utils as utl
-from views import home,Misson,analysis,options,configuration
+from views import home,Misson
 import pandas as pd
 import plotly.express as px
 
@@ -16,14 +16,7 @@ def navigation():
         home.load_view()
     elif route == "Misson":
         Misson.load_view()
-    elif route == "analysis":
-        analysis.load_view()
-    elif route == "options":
-        options.load_view()
-    elif route == "configuration":
-        configuration.load_view()
-    elif route == None:
-        home.load_view()
+   
         
 navigation()
 

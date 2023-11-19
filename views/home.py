@@ -76,7 +76,7 @@ def load_view():
         data = pd.concat([pd.DataFrame([i], columns=["Company", "Date", "Summary", "Status"]) for i in email_data], ignore_index=True)
         st.dataframe(data, hide_index=True, width=1000)
     
-    # Create a stacked bar chart with colors for sentiments
+    # Horizontal Bar Graph Create a stacked bar chart with colors for sentiments
     fig = px.bar(
         merged_df,
         x='Month',
@@ -85,6 +85,18 @@ def load_view():
         labels={'value': 'Count', 'variable': 'Sentiment'},
         color_discrete_map={'Negative': 'red', 'Positive': 'green', 'Neutral': 'gray'},
         barmode='stack'
+
+    #Verticle Bar Graph
+    #  fig = px.bar(
+    #     merged_df,
+    #     x=['Negative', 'Positive', 'Neutral'],
+    #     y="Month",
+    #     title='Sentiment Analysis by Month',
+    #     labels={'value': 'Count', 'variable': 'Sentiment'},
+    #     color_discrete_map={'Negative': 'red', 'Positive': 'green', 'Neutral': 'gray'},
+    #     barmode='stack',
+    #     orientation='h'
+    # )
     )
 
     # Set the y-axis tickmode and dtick to display only integer values
@@ -97,7 +109,7 @@ def load_view():
     fig.update_layout(
         xaxis=dict(fixedrange=True),
         yaxis=dict(fixedrange=True),
-        dragmode=False,
+        dragmode=False
     )
     if email_data:
         st.plotly_chart(fig)

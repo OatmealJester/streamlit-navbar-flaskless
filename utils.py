@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 from streamlit.components.v1 import html
 
-from PATHS import NAVBAR_PATHS, SETTINGS
+from PATHS import NAVBAR_PATHS
 
 
 def inject_custom_css():
@@ -18,17 +18,10 @@ def get_current_route():
 
 
 def navbar_component():
-    with open("assets/images/settings.png", "rb") as image_file:
-        image_as_base64 = base64.b64encode(image_file.read())
 
     navbar_items = ''
     for key, value in NAVBAR_PATHS.items():
         navbar_items += (f'<a class="navitem" href="/?nav={value}">{key}</a>')
-
-    settings_items = ''
-    for key, value in SETTINGS.items():
-        settings_items += (
-            f'<a href="/?nav={value}" class="settingsNav">{key}</a>')
 
     component = rf'''
             <nav class="container navbar" id="navbar">
@@ -36,9 +29,7 @@ def navbar_component():
                 {navbar_items}
                 </ul>
                 <div class="dropdown" id="settingsDropDown">
-                    <img class="dropbtn" src="data:image/png;base64, {image_as_base64.decode("utf-8")}"/>
                     <div id="myDropdown" class="dropdown-content">
-                        {settings_items}
                     </div>
                 </div>
             </nav>
